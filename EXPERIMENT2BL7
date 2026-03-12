@@ -1,0 +1,19 @@
+# Polymorphism using default arguments
+
+def area(length, width=None):
+    if width is None:
+        # If only one argument → assume square
+        print("Area of Square:", length * length)
+    else:
+        # If two arguments → rectangle
+        print("Area of Rectangle:", length * width)
+
+
+# Dynamic input
+l = int(input("Enter length: "))
+w = input("Enter width (press Enter if square): ")
+
+if w == "":
+    area(l)
+else:
+    area(l, int(w))

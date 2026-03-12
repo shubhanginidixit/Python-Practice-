@@ -1,0 +1,24 @@
+# Input Validation Decorator
+def validate_positive_integers(func):
+    def wrapper(*args, **kwargs):
+        for value in args:
+            if not isinstance(value, int):
+                raise TypeError("All arguments must be integers")
+            if value <= 0:
+                raise ValueError("All arguments must be positive integers")
+
+        return func(*args, **kwargs)
+    return wrapper
+
+
+# Example function
+@validate_positive_integers
+def multiply(a, b):
+    return a * b
+
+
+# Dynamic input
+x = int(input("Enter first number: "))
+y = int(input("Enter second number: "))
+
+print("Result:", multiply(x, y))
